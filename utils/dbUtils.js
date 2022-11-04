@@ -117,24 +117,6 @@ const updateOne = async (Collection, filter, query) => {
   }
 };
 
-/* Remove all subjects 2 weeks old (run once a day) */
-setInterval(async () => {
-  const subjects = await findAll(Subject);
-
-  for (let i = 0; i < subjects.length; i++) {
-    const subject_creation = new Date(subjects[i].dataCreated);
-
-    let date_difference_in_seconds =
-      (new Date().getTime() - subject_creation.getTime()) / 1000;
-
-    let num_seconds_in_2_weeks = 86400 * 14;
-
-    if (date_difference_in_seconds >= num_seconds_in_2_weeks) {
-      await deleteOne(Subject, { userID: subjects[i].userID });
-    }
-  }
-}, 86400);
-
 module.exports = {
   insertOne,
   findSome,
@@ -142,7 +124,4 @@ module.exports = {
   findOne,
   updateOne,
   deleteOne,
-  Job,
-  Subject,
-  JobType,
 };
