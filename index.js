@@ -6,6 +6,8 @@ const {urlencoded, json} = require('body-parser')
 
 const app = express();
 
+require('./utils/dbUtils')
+
 const PORT = 5000 | process.env.PORT;
 
 // console.info('Initialising request body parser for the server app...');

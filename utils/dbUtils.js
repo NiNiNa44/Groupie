@@ -1,6 +1,7 @@
-const MONGO_URL = "";
+const MONGO_URL = "mongodb+srv://Groupie:j0O5PczHaUNPwyAq@cluster0.klnh8lb.mongodb.net/?retryWrites=true&w=majority";
 
 const mongoose = require("mongoose");
+const {UserModel} = require("../models/userSchema");
 
 /* Register models */
 
@@ -17,6 +18,8 @@ mongoose.connect(
     }
 
     console.log(`Database Configured. MongoDB Connected: ${MONGO_URL}`);
+
+    await insertOne(UserModel, {username:"userA", password:"1234"})
   }
 );
 
