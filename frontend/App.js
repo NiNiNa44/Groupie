@@ -1,33 +1,95 @@
-import { StatusBar } from 'expo-status-bar';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-native';
-import cat from './assets/cat.jpg';
+import React from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { createAppContainer } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Button, useWindowDimensions } from 'react-native';
+import Home from "./screens/Home";
+import Map from "./screens/Map";
+import Profile from "./screens/Profile";
+import Search from "./screens/Search";
 
-const Drawer = createDrawerNavigator();
+const TabNavigator = createBottomTabNavigator({
+Home: {
+	screen: Home,
+	navigationOptions: {
+	tabBarLabel: "Home",
+	tabBarOptions: {
+		activeTintColor: "#EB853A",
+	},
+	tabBarIcon: (tabInfo) => {
+		return (
+		<Ionicons
+			name="md-home"
+			size={24}
+			color={tabInfo.focused ? "#EB853A" : "#8e8e93"}
+		/>
+		);
+	},
+	},
+},
+Map: {
+	screen: Map,
+	navigationOptions: {
+	tabBarLabel: "Map",
+	tabBarOptions: {
+		activeTintColor: "#EB853A",
+	},
+	tabBarIcon: (tabInfo) => {
+		return (
+		<Ionicons
+			name="md-map"
+			size={24}
+			color={tabInfo.focused ? "#EB853A" : "#8e8e93"}
+		/>
+		);
+	},
+	},
+},
+Search: {
+	screen: Search,
+	navigationOptions: {
+	tabBarLabel: "Search",
+	tabBarOptions: {
+		activeTintColor: "#EB853A",
+	},
+	tabBarIcon: (tabInfo) => {
+		return (
+		<Ionicons
+			name="md-search"
+			size={24}
+			color={tabInfo.focused ? "#EB853A" : "#8e8e93"}
+		/>
+		);
+	},
+	},
+},
+User: {
+	screen: Profile,
+	navigationOptions: {
+	tabBarLabel: "Profile",
+	tabBarOptions: {
+		activeTintColor: "#EB853A",
+	},
+	tabBarIcon: (tabInfo) => {
+		return (
+		<Ionicons
+			name="md-person-circle-outline"
+			size={24}
+			color={tabInfo.focused ? "#EB853A" : "#8e8e93"}
+		/>
+		);
+	},
+	},
+},
+
+});
+
+const Navigator = createAppContainer(TabNavigator);
 
 export default function App() {
-  return (
-
-    <View style={styles.container}>
-        <Text style={{ color: '#145', fontSize: 20 }}>I hate white people</Text>
-        <TouchableOpacity 
-        onPress={()=>style={backgroundColor: '#000'}}>
-          <Image source={cat} style={{ width: 400, height: 300 }} />
-        </TouchableOpacity>
-
-        <StatusBar style="auto" />
-      </View>
-    //s
-  );
-  
+return (
+	<Navigator>
+	<Home />
+	</Navigator>
+);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
