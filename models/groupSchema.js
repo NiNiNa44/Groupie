@@ -3,23 +3,23 @@ const mongoose = require("mongoose");
 // Define schema
 const Schema = mongoose.Schema;
 
-const usermodel = new Schema({
-  username: {
+const groupmodel = new Schema({
+  groupName: {
     type: String,
     required: true,
     unique: true,
   },
-  userID: {
+  groupID: {
     type: String,
     required: true,
     unique: true,
   },
-  ownedGroups: {
-    type: Array,
+  owner: {
+    type: String,
     required: true,
     unique: false,
   },
-  memberGroups: {
+  members: {
     type: Array,
     required: true,
     unique: false,
@@ -27,6 +27,6 @@ const usermodel = new Schema({
 });
 
 // Compile model from schema
-const UserModel = mongoose.model("UserModel", usermodel);
+const GroupModel = mongoose.model("GroupModel", groupmodel);
 
-module.exports = { UserModel };
+module.exports = { GroupModel };
