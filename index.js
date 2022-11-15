@@ -4,6 +4,7 @@ require("dotenv").config();
 const express = require("express");
 const { urlencoded, json } = require("body-parser");
 const userRouters = require("./routers/userShemaRouters");
+const groupRouters = require("./routers/groupSchemaRouters");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(require("cookie-parser")());
 
 //register routers
 app.use("", userRouters);
+app.use("", groupRouters);
 
 /*
  **
