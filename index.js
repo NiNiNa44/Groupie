@@ -1,12 +1,13 @@
 // console.info('Declaring dependencies...');
-require('dotenv').config();
+require("dotenv").config();
 
-const express = require('express')
-const {urlencoded, json} = require('body-parser')
+const express = require("express");
+const { urlencoded, json } = require("body-parser");
+const userRouters = require("./routers/userShemaRouters");
 
 const app = express();
 
-require('./utils/dbUtils')
+require("./utils/dbUtils");
 
 const PORT = 5000 | process.env.PORT;
 
@@ -15,9 +16,10 @@ const PORT = 5000 | process.env.PORT;
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
-app.use(require('cookie-parser')());
+app.use(require("cookie-parser")());
 
-
+//register routers
+app.use("", userRouters);
 
 /*
  **

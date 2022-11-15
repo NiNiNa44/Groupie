@@ -1,8 +1,9 @@
-const MONGO_URL = "mongodb+srv://Groupie:j0O5PczHaUNPwyAq@cluster0.klnh8lb.mongodb.net/?retryWrites=true&w=majority";
+const MONGO_URL =
+  "mongodb+srv://Groupie:j0O5PczHaUNPwyAq@cluster0.klnh8lb.mongodb.net/?retryWrites=true&w=majority";
 
 const mongoose = require("mongoose");
 const { GroupModel } = require("../models/groupSchema");
-const {UserModel} = require("../models/userSchema");
+const { UserModel } = require("../models/userSchema");
 
 /* Register models */
 
@@ -20,13 +21,13 @@ mongoose.connect(
 
     console.log(`Database Configured. MongoDB Connected: ${MONGO_URL}`);
 
-    await insertOne(UserModel, {username:"userA", userID:"1", ownedGroups:["1"], memberGroups:["1", "3"]})
-    await insertOne(UserModel, {username:"userB", userID:"2", ownedGroups:["2"], memberGroups:["2", "3"]})
-    await insertOne(UserModel, {username:"userC", userID:"3", ownedGroups:["3"], memberGroups:["3", "2"]})
+    // await insertOne(UserModel, {username:"userA", userID:"1", ownedGroups:["1"], memberGroups:["1", "3"]})
+    // await insertOne(UserModel, {username:"userB", userID:"2", ownedGroups:["2"], memberGroups:["2", "3"]})
+    // await insertOne(UserModel, {username:"userC", userID:"3", ownedGroups:["3"], memberGroups:["3", "2"]})
 
-    await insertOne(GroupModel, {groupName:"Group1", groupID:"1", owner:"1", members:["1"]})
-    await insertOne(GroupModel, {groupName:"Group2", groupID:"2", owner:"2", members:["2", "3"]})
-    await insertOne(GroupModel, {groupName:"Group3", groupID:"3", owner:"3", members:["1", "2", "3"]})
+    // await insertOne(GroupModel, {groupName:"Group1", groupID:"1", owner:"1", members:["1"]})
+    // await insertOne(GroupModel, {groupName:"Group2", groupID:"2", owner:"2", members:["2", "3"]})
+    // await insertOne(GroupModel, {groupName:"Group3", groupID:"3", owner:"3", members:["1", "2", "3"]})
   }
 );
 
